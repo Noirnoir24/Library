@@ -18,3 +18,36 @@ function addBookToLibrary(title, author, pages, read){
 const myNewBook= new Book(title, author, pages, read);
 myLibrary.push(myNewBook);
 }
+
+const Book0= new Book('Bingo', 'Luigi', '25', 'not read');
+
+const Book1= new Book('What?', 'Who?', '60', 'read')
+
+const Book2= new Book('Necronomicon', 'Niro', '120', 'read');
+
+myLibrary.push(Book0, Book1, Book2);
+
+const cardContainer= document.getElementById('cardContainer');
+
+
+
+myLibrary.forEach(book => {
+const bookDiv= document.createElement('div');
+bookDiv.classList.add('book-card');
+
+const bookHeading= document.createElement('h3');
+bookHeading.textContent= book.title;
+
+const bookAuthor= document.createElement('p');
+bookAuthor.textContent= `Written by: ${book.author}`;
+
+const bookPages= document.createElement('p');
+bookPages.textContent= `Number of pages: ${book.pages}`;
+
+bookDiv.appendChild(bookHeading);
+bookDiv.appendChild(bookAuthor);
+bookDiv.appendChild(bookPages);
+
+cardContainer.appendChild(bookDiv);
+})
+
