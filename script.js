@@ -19,11 +19,11 @@ const myNewBook= new Book(title, author, pages, read);
 myLibrary.push(myNewBook);
 }
 
-const Book0= new Book('Bingo', 'Luigi', '25', 'not read');
+const Book0= new Book('Bingo', 'Luigi', '25', 'Not read');
 
-const Book1= new Book('What?', 'Who?', '60', 'read')
+const Book1= new Book('What?', 'Who?', '60', 'Read')
 
-const Book2= new Book('Necronomicon', 'Niro', '120', 'read');
+const Book2= new Book('Necronomicon', 'Niro', '120', 'Read');
 
 myLibrary.push(Book0, Book1, Book2);
 
@@ -44,9 +44,13 @@ bookAuthor.textContent= `Written by: ${book.author}`;
 const bookPages= document.createElement('p');
 bookPages.textContent= `Number of pages: ${book.pages}`;
 
+const bookStatus= document.createElement('p');
+bookStatus.textContent= book.read;
+
 bookDiv.appendChild(bookHeading);
 bookDiv.appendChild(bookAuthor);
 bookDiv.appendChild(bookPages);
+bookDiv.appendChild(bookStatus);
 
 cardContainer.appendChild(bookDiv);
 })
