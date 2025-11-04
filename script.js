@@ -55,3 +55,59 @@ bookDiv.appendChild(bookStatus);
 cardContainer.appendChild(bookDiv);
 })
 
+const addBookBtn= document.querySelector('.add-book');
+const newBookDialog= document.querySelector('#newBookDialog')
+
+addBookBtn.addEventListener('click', () => {
+newBookDialog.showModal()
+})
+
+confirmBtn= document.getElementById('confirmButton');
+
+confirmBtn.addEventListener('click', ()=> {
+
+  event.preventDefault();
+
+  const bookForm = document.getElementById('bookForm');
+
+  if (!bookForm.reportValidity()) {
+        return; 
+    }
+
+  const formBookHeading= document.getElementById('bTitle').value;
+  const formBookAuthor= document.getElementById('bAuthor').value;
+  const formBookPages= document.getElementById('bPages').value;
+  const formBookStatus= document.getElementById('bStatus').value;
+
+  addBookToLibrary(formBookHeading, formBookAuthor, formBookPages, formBookStatus);
+
+  const selectedObject= myLibrary.find(obj => obj.id === (myLibrary[myLibrary.length-1].id))
+
+const bookDiv= document.createElement('div');
+bookDiv.classList.add('book-card');
+
+const bookHeading= document.createElement('h3');
+bookHeading.textContent= selectedObject.title;
+
+const bookAuthor= document.createElement('p');
+bookAuthor.textContent= `Written by: ${selectedObject.author}`;
+
+const bookPages= document.createElement('p');
+bookPages.textContent= `Number of pages: ${selectedObject.pages}`;
+
+const bookStatus= document.createElement('p');
+bookStatus.textContent= selectedObject.read;
+
+bookDiv.appendChild(bookHeading);
+bookDiv.appendChild(bookAuthor);
+bookDiv.appendChild(bookPages);
+bookDiv.appendChild(bookStatus);
+
+cardContainer.appendChild(bookDiv);
+
+document.getElementById('bookForm').reset()
+
+newBookDialog.close()
+
+})
+

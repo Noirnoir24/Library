@@ -6,8 +6,25 @@
     <title>Document</title>
 </head>
 <body>
+<button class="add-book">New Book</button>
+<dialog id="newBookDialog">
+  <h2>Enter Your Information</h2>
+  <form id="bookForm" method="dialog">
+    <label for="bTitle">Title:</label><br>
+    <input type="text" id="bTitle" name="bTitle" required><br>
+    <label for="bAuthor">Author:</label><br>
+    <input type="text" id="bAuthor" name="bAuthor" required><br>
+    <label for="bPages">Nº of Pages:</label><br>
+    <input type="text" id="bPages" name="bPages" required><br>
+    <label for="bStatus">Status:</label><br>
+    <input type="text" id="bStatus" name="bStatus" required><br>
+    <button id="confirmButton">Confirm</button>
+     <button type="button" onclick="document.getElementById('newBookDialog').close()">Cancel</button>
+  </form>
+</dialog>
 <div id="cardContainer"></div>
 
     <script src="script.js"></script>
+    
 </body>
 </html>
