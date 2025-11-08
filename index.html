@@ -16,8 +16,11 @@
     <input type="text" id="bAuthor" name="bAuthor" required><br>
     <label for="bPages">Nº of Pages:</label><br>
     <input type="text" id="bPages" name="bPages" required><br>
-    <label for="bStatus">Status:</label><br>
-    <input type="text" id="bStatus" name="bStatus" required><br>
+    <legend>Book status: </legend>
+  <input type="radio" id="statusRead" name="bookStatus" value="Read">
+  <label for="statusRead">Read</label><br>
+  <input type="radio" id="statusNotRead" name="bookStatus" value="Not Read">
+  <label for="statusNotRead">Not Read</label><br>
     <button id="confirmButton">Confirm</button>
      <button type="button" onclick="document.getElementById('newBookDialog').close()" autofocus>Cancel</button>
   </form>

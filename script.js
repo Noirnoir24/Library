@@ -12,6 +12,14 @@ function Book(title, author, pages, read){
   this.info=function(){
     return this.title+" by "+this.author+", "+this.pages+" pages, "+this.read+", ID: "+this.id
   };
+  this.changeStatus= function(){
+    if(this.read==="Read") {
+      this.read="Not Read"
+    }
+    else if(this.read==="Not Read"){
+      this.read="Read"
+    }
+  }
 }
 
 function addBookToLibrary(title, author, pages, read){
@@ -19,7 +27,7 @@ const myNewBook= new Book(title, author, pages, read);
 myLibrary.push(myNewBook);
 }
 
-const Book0= new Book('Bingo', 'Luigi', '25', 'Not read');
+const Book0= new Book('Bingo', 'Luigi', '25', 'Not Read');
 
 const Book1= new Book('What?', 'Who?', '60', 'Read')
 
@@ -45,11 +53,15 @@ const bookPages= document.createElement('p');
 bookPages.textContent= `Number of pages: ${book.pages}`;
 
 const bookStatus= document.createElement('p');
-bookStatus.textContent= book.read;
+bookStatus.textContent= `Status: ${book.read}`;
 
 const removeBookButton= document.createElement('button');
 removeBookButton.textContent= "Remove"
 removeBookButton.classList.add('removeBookButton')
+
+const changeStatusBtn= document.createElement('button');
+changeStatusBtn.textContent= "Change Status"
+
 
 removeBookButton.addEventListener('click', () => { 
     bookDiv.remove();
@@ -63,11 +75,17 @@ removeBookButton.addEventListener('click', () => {
     }
   })
 
+changeStatusBtn.addEventListener('click', ()=> {
+  book.changeStatus();
+  bookStatus.textContent= `Status: ${book.read}`
+})
+
 bookDiv.appendChild(bookHeading);
 bookDiv.appendChild(bookAuthor);
 bookDiv.appendChild(bookPages);
 bookDiv.appendChild(bookStatus);
 bookDiv.appendChild(removeBookButton);
+bookDiv.appendChild(changeStatusBtn);
 
 cardContainer.appendChild(bookDiv);
 })
@@ -94,7 +112,7 @@ confirmBtn.addEventListener('click', ()=> {
   const formBookHeading= document.getElementById('bTitle').value;
   const formBookAuthor= document.getElementById('bAuthor').value;
   const formBookPages= document.getElementById('bPages').value;
-  const formBookStatus= document.getElementById('bStatus').value;
+  const formBookStatus= document.querySelector('input[name="bookStatus"]:checked').value;
 
   addBookToLibrary(formBookHeading, formBookAuthor, formBookPages, formBookStatus);
 
@@ -113,11 +131,15 @@ const bookPages= document.createElement('p');
 bookPages.textContent= `Number of pages: ${selectedObject.pages}`;
 
 const bookStatus= document.createElement('p');
-bookStatus.textContent= selectedObject.read;
+bookStatus.textContent= `Status: ${selectedObject.read}`;
 
 const removeBookButton= document.createElement('button');
 removeBookButton.textContent= "Remove"
 removeBookButton.classList.add('removeBookButton')
+
+const changeStatusBtn= document.createElement('button');
+changeStatusBtn.textContent= "Change Status"
+
 
 removeBookButton.addEventListener('click', () => { 
     bookDiv.remove();
@@ -131,11 +153,17 @@ removeBookButton.addEventListener('click', () => {
     }
   })
 
+changeStatusBtn.addEventListener('click', ()=> {
+  selectedObject.changeStatus();
+  bookStatus.textContent= `Status: ${selectedObject.read}`
+})
+
 bookDiv.appendChild(bookHeading);
 bookDiv.appendChild(bookAuthor);
 bookDiv.appendChild(bookPages);
 bookDiv.appendChild(bookStatus);
 bookDiv.appendChild(removeBookButton);
+bookDiv.appendChild(changeStatusBtn);
 
 cardContainer.appendChild(bookDiv);
 
