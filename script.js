@@ -47,10 +47,27 @@ bookPages.textContent= `Number of pages: ${book.pages}`;
 const bookStatus= document.createElement('p');
 bookStatus.textContent= book.read;
 
+const removeBookButton= document.createElement('button');
+removeBookButton.textContent= "Remove"
+removeBookButton.classList.add('removeBookButton')
+
+removeBookButton.addEventListener('click', () => { 
+    bookDiv.remove();
+
+    let bookIdToRemove= book.id
+
+    let bookToRemove= myLibrary.findIndex(book => book.id === bookIdToRemove);
+
+    if (bookToRemove !== -1) {
+      myLibrary.splice(bookToRemove, 1)
+    }
+  })
+
 bookDiv.appendChild(bookHeading);
 bookDiv.appendChild(bookAuthor);
 bookDiv.appendChild(bookPages);
 bookDiv.appendChild(bookStatus);
+bookDiv.appendChild(removeBookButton);
 
 cardContainer.appendChild(bookDiv);
 })
@@ -70,7 +87,7 @@ confirmBtn.addEventListener('click', ()=> {
 
   const bookForm = document.getElementById('bookForm');
 
-  if (!bookForm.reportValidity()) {
+  if (!bookForm.reportValidity()) { /// Wont prevent long strings or numbers from being submitted, maybe will implement later
         return; 
     }
 
@@ -98,10 +115,27 @@ bookPages.textContent= `Number of pages: ${selectedObject.pages}`;
 const bookStatus= document.createElement('p');
 bookStatus.textContent= selectedObject.read;
 
+const removeBookButton= document.createElement('button');
+removeBookButton.textContent= "Remove"
+removeBookButton.classList.add('removeBookButton')
+
+removeBookButton.addEventListener('click', () => { 
+    bookDiv.remove();
+
+        let bookIdToRemove= selectedObject.id
+
+    let bookToRemove= myLibrary.findIndex(book => book.id === bookIdToRemove);
+
+    if (bookToRemove !== -1) {
+      myLibrary.splice(bookToRemove, 1)
+    }
+  })
+
 bookDiv.appendChild(bookHeading);
 bookDiv.appendChild(bookAuthor);
 bookDiv.appendChild(bookPages);
 bookDiv.appendChild(bookStatus);
+bookDiv.appendChild(removeBookButton);
 
 cardContainer.appendChild(bookDiv);
 
@@ -110,4 +144,7 @@ document.getElementById('bookForm').reset()
 newBookDialog.close()
 
 })
+
+const removeBtn= document.querySelectorAll('.removeBookButton')
+
 
