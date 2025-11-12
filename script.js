@@ -61,6 +61,7 @@ removeBookButton.classList.add('removeBookButton')
 
 const changeStatusBtn= document.createElement('button');
 changeStatusBtn.textContent= "Change Status"
+changeStatusBtn.classList.add('changeStatusButton')
 
 
 removeBookButton.addEventListener('click', () => { 
@@ -139,6 +140,7 @@ removeBookButton.classList.add('removeBookButton')
 
 const changeStatusBtn= document.createElement('button');
 changeStatusBtn.textContent= "Change Status"
+changeStatusBtn.classList.add('changeStatusButton')
 
 
 removeBookButton.addEventListener('click', () => { 
