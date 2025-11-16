@@ -12,7 +12,7 @@
 <button class="add-book">New Book</button>
     </header>
 <dialog id="newBookDialog">
-  <h2>Enter Your Information</h2>
+  <h2>Enter Book Details</h2>
   <form id="bookForm" method="dialog">
     <label for="bTitle">Title:</label><br>
     <input type="text" id="bTitle" name="bTitle" required><br>
@@ -21,12 +21,16 @@
     <label for="bPages">Nº of Pages:</label><br>
     <input type="text" id="bPages" name="bPages" required><br>
     <legend>Book status: </legend>
+    <div class="radio-container">
   <input type="radio" id="statusRead" name="bookStatus" value="Read">
-  <label for="statusRead">Read</label><br>
-  <input type="radio" id="statusNotRead" name="bookStatus" value="Not Read">
-  <label for="statusNotRead">Not Read</label><br>
+  <label for="statusRead">Read</label>
+  <input type="radio" id="statusNotRead" name="bookStatus" value="Not Read" required>
+  <label for="statusNotRead">Not Read</label>
+  </div>
+  <div class="button-container">
     <button id="confirmButton">Confirm</button>
-     <button type="button" onclick="document.getElementById('newBookDialog').close()" autofocus>Cancel</button>
+     <button id="cancelButton" type="button" onclick="document.getElementById('newBookDialog').close()" autofocus>Cancel</button>
+     </div>
   </form>
 </dialog>
 <div id="cardContainer"></div>
